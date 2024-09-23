@@ -3,11 +3,14 @@ package main
 import (
 	"Multiplexing_/code"
 	"fmt"
+	"time"
 )
 
 func main() {
-	fmt.Println("start jenkins job test1")
+	fmt.Println("start jenkins job test ======> 睡眠5秒 准备执行Multiplexing方法")
+	time.Sleep(5 * time.Second)
 	code.Multiplexing()
-	//code.Kubernetes()
+
+	fmt.Println("code.Multiplexing() ======> 执行结束")
 
 }

@@ -9,12 +9,17 @@ import (
 )
 
 var (
-	PoolSize   int64          // 协程池
-	WorkerSize int64          // 工作者数量
-	ch         chan int       // 通信信号量
-	chWorker   chan int       // 工作者处理
-	wg         sync.WaitGroup // wg协程阻塞
+	PoolSize      int64          // 协程池
+	WorkerSize    int64          // 工作者数量
+	ch            chan int       // 通信信号量
+	chWorker      chan int       // 工作者处理
+	wg            sync.WaitGroup // wg协程阻塞
+	iteratorNum   int64          // 限制迭代次数
+	iteratorEndCh chan int       // 迭代终止监听
+	ifEnd         bool
 )
+
+const endNum = 3
 
 func init() {
 	PoolSize = 32
@@ -22,6 +27,9 @@ func init() {
 	ch = make(chan int)
 	chWorker = make(chan int)
 	wg = sync.WaitGroup{}
+	iteratorNum = 0
+	ifEnd = false
+	iteratorEndCh = make(chan int)
 }
 
 func handleWorkerSize() {
@@ -29,6 +37,10 @@ func handleWorkerSize() {
 		select {
 		case <-chWorker:
 			WorkerSize--
+		case <-iteratorEndCh:
+			// 终止
+			ifEnd = true
+			return
 		}
 	}
 }
@@ -39,6 +51,9 @@ func Multiplexing() {
 	go handleWorkerSize()
 
 	for {
+		if ifEnd {
+			return
+		}
 		wg.Add(1)
 		run()
 		wg.Wait()
@@ -52,6 +67,12 @@ func run() {
 	if WorkerSize >= PoolSize {
 		log.Println("工作者过多 休息等待一下")
 		time.Sleep(3 * time.Second)
+		iteratorNum++
+		// 终止结束
+		if iteratorNum >= endNum {
+			fmt.Println("终止")
+			iteratorEndCh <- 1
+		}
 		// 直接返回
 		return
 	}
