@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="Config">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/mysql.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FuFileBO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="MySqlConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/mysql.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="fuFileBOMapper">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="scannedPathMapping">
+      <map>
+        <entry key="file://$PROJECT_DIR$/code/Kubernetes.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1726910707714" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/code/Multiplexing.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727074343726" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727073480157" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/mysql.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727074408704" />
+              <option name="schema">
+                <list>
+                  <option value="Config" />
+                  <option value="MySqlConfig" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1726817039730" />
+              <option name="schema">
+                <list>
+                  <option value="FuFileBO" />
+                  <option value="fuFileBOMapper" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/enum/isDeletedEnum.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724406984620" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/enum/isUploadOss.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724406984620" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/enum/ossPathEnum.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724406984620" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/enum/taskSituationEnum.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724925198287" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/param.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1726815964695" />
+            </ScannedPath>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableStructMapping">
+      <map>
+        <entry key="config" value="Config" />
+        <entry key="fu_file_bo" value="FuFileBO" />
+        <entry key="fu_file_bo_mapper" value="fuFileBOMapper" />
+        <entry key="my_sql_config" value="MySqlConfig" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1727057330755" />
+  </component>
+</project>
