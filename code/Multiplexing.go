@@ -33,19 +33,28 @@ func init() {
 }
 
 func handleWorkerSize() {
+	defer func() {
+		fmt.Println("handleWorkerSize 协程结束")
+	}()
+	// iteratorEndCh 用于结束 handleWorkerSize 协程
 	for {
 		select {
 		case <-chWorker:
 			WorkerSize--
 		case <-iteratorEndCh:
-			// 终止
-			ifEnd = true
 			return
 		}
 	}
 }
 
 func Multiplexing() {
+	defer func() {
+		close(ch)
+		close(chWorker)
+		close(iteratorEndCh)
+		fmt.Println("关闭全部 channel 通道")
+	}()
+
 	log.Printf("协程池大小为: %d", PoolSize)
 	// 开启异步线程监听 对chWorker 进行唯一处理
 	go handleWorkerSize()
@@ -68,14 +77,18 @@ func run() {
 		log.Println("工作者过多 休息等待一下")
 		time.Sleep(3 * time.Second)
 		iteratorNum++
-		// 终止结束
-		if iteratorNum >= endNum {
-			fmt.Println("终止")
-			iteratorEndCh <- 1
-		}
 		// 直接返回
 		return
 	}
+
+	// 终止结束
+	if iteratorNum >= endNum {
+		fmt.Println("Multiplexing 多路复用监听主线程结束")
+		ifEnd = true
+		iteratorEndCh <- 1 // 发送终止信号
+		return
+	}
+
 	// 开启协程 ch阻塞等待
 	WorkerSize++
 	go handle()
