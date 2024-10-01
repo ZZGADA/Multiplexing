@@ -24,6 +24,13 @@
             </set>
           </value>
         </entry>
+        <entry key="PodResource">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/code/dynamicStaringPod.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="fuFileBOMapper">
           <value>
             <set>
@@ -35,24 +42,36 @@
     </option>
     <option name="scannedPathMapping">
       <map>
-        <entry key="file://$PROJECT_DIR$/code/Kubernetes.go">
+        <entry key="file://$PROJECT_DIR$/code/dynamicStaringPod.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727782519756" />
+              <option name="schema">
+                <list>
+                  <option value="PodResource" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/code/kubernetes.go">
           <value>
             <ScannedPath>
               <option name="lastModified" value="1726910707714" />
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/code/Multiplexing.go">
+        <entry key="file://$PROJECT_DIR$/code/multiplexing.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727074343726" />
+              <option name="lastModified" value="1727083433247" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727077300518" />
+              <option name="lastModified" value="1727680866645" />
             </ScannedPath>
           </value>
         </entry>
@@ -125,8 +144,9 @@
         <entry key="fu_file_bo" value="FuFileBO" />
         <entry key="fu_file_bo_mapper" value="fuFileBOMapper" />
         <entry key="my_sql_config" value="MySqlConfig" />
+        <entry key="pod_resource" value="PodResource" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1727057330755" />
+    <option name="lastTimeChecked" value="1727767246381" />
   </component>
 </project>
