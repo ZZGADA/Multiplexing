@@ -4,7 +4,7 @@
 URL="http://www.zzgeda.com/utilityBill/signUp/dropDownList/getUniversityAndArea"
 
 # Number of times to execute the request
-NUM_REQUESTS=1000
+NUM_REQUESTS=15
 
 # Loop to execute the request
 for ((i=1; i<=NUM_REQUESTS; i++))

@@ -1,6 +1,7 @@
 package code
 
 import (
+	"Multiplexing_/kubernetes/enum"
 	"bytes"
 	"context"
 	"fmt"
@@ -15,6 +16,7 @@ import (
 	"strings"
 	"time"
 
+	"Multiplexing_/kubernetes/resource"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
@@ -28,12 +30,6 @@ const threshold = 5
 var isCreating = false
 var podDynamicScaling = make([]string, 0)
 
-// PodResource 定义pod的资源情况
-type PodResource struct {
-	PodNum int `json:"pod_num"`
-	TcpSum int `json:"tcp_sum"`
-}
-
 func DynamicStringPod() {
 	// 配置Kubernetes客户端
 	config, err := clientcmd.BuildConfigFromFlags("", configPath)
@@ -45,10 +41,13 @@ func DynamicStringPod() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	command := []string{"sh", "-c", " netstat -nat | grep -i '18081' | wc -l"}
 
 	for {
-		// TODO：追加计时器 阈值超过一定时间才动态生成
-		podTcpStatus := checkPodTcpStatus(clientSet, config)
+		// TODO：追加计时器 阈值超过一定时间才动态生成， 追加 3ơ 原则
+		podResource := resource.NewPodInstance(namespace, config, clientSet)
+		podTcpStatus, _ := podResource.GetTcpResource(18081, enum.ESTABLISHED, command)
+
 		if judgeThreadHold(podTcpStatus) {
 			fmt.Println("负载过高 需用动态扩容 ，准备更新容器")
 			isCreating = true
@@ -61,7 +60,7 @@ func DynamicStringPod() {
 	}
 }
 
-func judgeThreadHold(podTcpStatus PodResource) bool {
+func judgeThreadHold(podTcpStatus *resource.PodResource) bool {
 	// 计算每个pod的平均tcp连接数
 	// 如果超出阈值 同时没有新的容器正在创建的话 那么就要新建容器
 	podNum := podTcpStatus.PodNum
@@ -72,15 +71,18 @@ func judgeThreadHold(podTcpStatus PodResource) bool {
 }
 
 // 校验 tcp的连接状态
-func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) PodResource {
-	// sh -c 用于执行更加复杂的命令行字符串
-	//command := []string{"sh", "-c", "ss -t -p | grep 'pid=1' | wc -l"}
-	// netstat -t -p | grep 18081 | wc -l
-	// 获取 18081 端口tcp连接数
-	// -n 显示数字地址而不是尝试解析主机名。
-	// -t tcp
-	// -a 所有连接
-	command := []string{"sh", "-c", "netstat -nat | grep -i '18081' | wc -l"}
+func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) resource.PodResource {
+	/**
+	-
+		sh -c 用于执行更加复杂的命令行字符串
+		command := []string{"sh", "-c", "ss -t -p | grep 'pid=1' | wc -l"}
+		netstat -t -p | grep 18081 | wc -l
+	    获取 18081 端口tcp连接数
+		-n 显示数字地址而不是尝试解析主机名。
+		-t tcp
+		-a 所有连接
+	*/
+	command := []string{"sh", "-c", " netstat -nat | grep -i '18081' | wc -l"}
 	podList, _ := clientSet.CoreV1().Pods(namespace).List(context.TODO(), metav1.ListOptions{})
 	tcpSum := 0
 
@@ -124,7 +126,7 @@ func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) Pod
 		tcpSum += tcpNum
 	}
 
-	return PodResource{PodNum: len(podList.Items), TcpSum: tcpSum}
+	return resource.PodResource{PodNum: len(podList.Items), TcpSum: tcpSum}
 }
 
 // deleteBackUpDeployment 删除创建的负载pod
@@ -153,10 +155,11 @@ func startingBackUpDeployment(config *rest.Config) {
 		isCreating = false
 	}()
 	/**
-	schema.GroupVersionResource：这是一个结构体，用于表示 Kubernetes 资源的组、版本和资源类型。
-	Group: "apps"：表示资源所属的组是 apps。
-	Version: "v1"：表示资源的版本是 v1。
-	Resource: "deployments"：表示资源的类型是 deployments。
+	-
+		schema.GroupVersionResource：这是一个结构体，用于表示 Kubernetes 资源的组、版本和资源类型。
+		Group: "apps"：表示资源所属的组是 apps。
+		Version: "v1"：表示资源的版本是 v1。
+		Resource: "deployments"：表示资源的类型是 deployments。
 	*/
 	client, _ := dynamic.NewForConfig(config)
 	deploymentRes := schema.GroupVersionResource{Group: "apps", Version: "v1", Resource: "deployments"}

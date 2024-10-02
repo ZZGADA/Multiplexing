@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-	code.DynamicStringPod()
-
+	testDynamicScaling()
 }
 
 func testMultiplexing() {
@@ -18,4 +17,9 @@ func testMultiplexing() {
 	code.Multiplexing()
 
 	fmt.Println("code.Multiplexing() ======> 执行结束")
+}
+
+func testDynamicScaling() {
+	// 水平动态扩容
+	code.DynamicStringPod()
 }

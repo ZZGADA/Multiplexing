@@ -32,13 +32,14 @@ func Kubernetes() {
 /**
  * 通过CoreV1 与kubernetes进行操作  .Pod .Service
  */
-
 func getPod(clientSet *kubernetes.Clientset) {
-	// 获取Pod列表
-	// CoreV1 返回一个可以操作Kubernetes核心V1版本API资源的接口。在这个例子中，它返回的是一个可以操作Pod资源的接口。
-	// List 这是一个方法，用于列出Pod资源。
-	// context 这是一个上下文参数，用于控制请求的生命周期。
-	// 这是一个选项参数，用于指定列出资源时的过滤条件。在这个例子中，使用了空的ListOptions，表示不进行任何过滤，获取所有的Pod。
+	/**
+	- 获取Pod列表
+	  CoreV1 返回一个可以操作Kubernetes核心V1版本API资源的接口。在这个例子中，它返回的是一个可以操作Pod资源的接口。
+	  List 这是一个方法，用于列出Pod资源。
+	  context 这是一个上下文参数，用于控制请求的生命周期。
+	  这是一个选项参数，用于指定列出资源时的过滤条件。在这个例子中，使用了空的ListOptions，表示不进行任何过滤，获取所有的Pod。
+	*/
 	pods, err := clientSet.CoreV1().Pods(namespace).List(context.TODO(), v1.ListOptions{})
 	if err != nil {
 		log.Fatal(err)
