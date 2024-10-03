@@ -3,10 +3,10 @@ package enum
 type Resource string
 
 const (
-	Pod        Resource = "Pod"
-	Service    Resource = "Service"
-	Ingress    Resource = "Ingress"
-	Deployment Resource = "Deployment"
+	Pod        Resource = "pods"
+	Service    Resource = "services"
+	Ingress    Resource = "ingresses"
+	Deployment Resource = "deployments"
 )
 
 func (r Resource) String() string {

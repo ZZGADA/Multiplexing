@@ -9,8 +9,6 @@ import (
 	"log"
 )
 
-const namespace = "backend"
-
 func Kubernetes() {
 	// 配置Kubernetes客户端
 	config, err := clientcmd.BuildConfigFromFlags("", "/Users/tal/.kube/config")

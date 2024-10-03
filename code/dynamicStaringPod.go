@@ -2,6 +2,7 @@ package code
 
 import (
 	"Multiplexing_/kubernetes/enum"
+	"Multiplexing_/kubernetes/module"
 	"bytes"
 	"context"
 	"fmt"
@@ -26,6 +27,7 @@ import (
 const configPath = "/Users/tal/.kube/config"
 const pods = "pods"
 const threshold = 5
+const namespace = "backend"
 
 var isCreating = false
 var podDynamicScaling = make([]string, 0)
@@ -41,14 +43,18 @@ func DynamicStringPod() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	command := []string{"sh", "-c", " netstat -nat | grep -i '18081' | wc -l"}
+	// -n：显示数字地址和端口号，而不是尝试解析主机名和服务名。这可以加快输出速度，因为不需要进行 DNS 查询。
+	// -a：显示所有的网络连接，包括监听（listening）和非监听（non-listening）套接字。
+	// -t：显示 TCP 连接。
+	// -i: 忽略消协
+	command := " netstat -nt | grep -i '18081' | wc -l"
 
 	for {
 		// TODO：追加计时器 阈值超过一定时间才动态生成， 追加 3ơ 原则
-		podResource := resource.NewPodInstance(namespace, config, clientSet)
+		podResource := module.NewPodInstance(namespace, config, clientSet)
 		podTcpStatus, _ := podResource.GetTcpResource(18081, enum.ESTABLISHED, command)
 
-		if judgeThreadHold(podTcpStatus) {
+		if judgeThreadHold(&podTcpStatus.TcpConnect) {
 			fmt.Println("负载过高 需用动态扩容 ，准备更新容器")
 			isCreating = true
 			go startingBackUpDeployment(config)
@@ -60,18 +66,18 @@ func DynamicStringPod() {
 	}
 }
 
-func judgeThreadHold(podTcpStatus *resource.PodResource) bool {
+func judgeThreadHold(podTcpStatus *resource.TcpConnectResource) bool {
 	// 计算每个pod的平均tcp连接数
 	// 如果超出阈值 同时没有新的容器正在创建的话 那么就要新建容器
-	podNum := podTcpStatus.PodNum
-	tcpSum := podTcpStatus.TcpSum
+	podNum := podTcpStatus.UnitNum
+	tcpSum := podTcpStatus.TcpNum
 	meanTcpNumEachPod := tcpSum / podNum
 
 	return meanTcpNumEachPod >= threshold && !isCreating
 }
 
 // 校验 tcp的连接状态
-func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) resource.PodResource {
+func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) resource.TcpConnectResource {
 	/**
 	-
 		sh -c 用于执行更加复杂的命令行字符串
@@ -126,7 +132,7 @@ func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) res
 		tcpSum += tcpNum
 	}
 
-	return resource.PodResource{PodNum: len(podList.Items), TcpSum: tcpSum}
+	return resource.TcpConnectResource{UnitNum: len(podList.Items), TcpNum: tcpSum}
 }
 
 // deleteBackUpDeployment 删除创建的负载pod
