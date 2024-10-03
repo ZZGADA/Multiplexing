@@ -2,6 +2,7 @@ package code
 
 import (
 	"Multiplexing_/kubernetes/enum"
+	"Multiplexing_/kubernetes/global"
 	"Multiplexing_/kubernetes/module"
 	"bytes"
 	"context"
@@ -32,6 +33,7 @@ const namespace = "backend"
 var isCreating = false
 var podDynamicScaling = make([]string, 0)
 
+// DynamicStringPod 练习用的 现在没啥用了
 func DynamicStringPod() {
 	// 配置Kubernetes客户端
 	config, err := clientcmd.BuildConfigFromFlags("", configPath)
@@ -51,7 +53,7 @@ func DynamicStringPod() {
 
 	for {
 		// TODO：追加计时器 阈值超过一定时间才动态生成， 追加 3ơ 原则
-		podResource := module.NewPodInstance(namespace, config, clientSet)
+		podResource := module.NewPodInstance(namespace, config, clientSet, global.DynamicClient)
 		podTcpStatus, _ := podResource.GetTcpResource(18081, enum.ESTABLISHED, command)
 
 		if judgeThreadHold(&podTcpStatus.TcpConnect) {
@@ -76,7 +78,7 @@ func judgeThreadHold(podTcpStatus *resource.TcpConnectResource) bool {
 	return meanTcpNumEachPod >= threshold && !isCreating
 }
 
-// 校验 tcp的连接状态
+// checkPodTcpStatus 校验 tcp的连接状态
 func checkPodTcpStatus(clientSet *kubernetes.Clientset, config *rest.Config) resource.TcpConnectResource {
 	/**
 	-
