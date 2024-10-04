@@ -10,10 +10,10 @@
             </set>
           </value>
         </entry>
-        <entry key="FakeScaleClient">
+        <entry key="Deployment">
           <value>
             <set>
-              <option value="file://$PROJECT_DIR$/../client-go/scale/fake/client.go" />
+              <option value="file://$PROJECT_DIR$/kubernetes/template/deployment.go" />
             </set>
           </value>
         </entry>
@@ -28,7 +28,6 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/code/structureRetuen.go" />
-              <option value="file://$PROJECT_DIR$/main.go" />
             </set>
           </value>
         </entry>
@@ -43,7 +42,6 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/code/structureRetuen.go" />
-              <option value="file://$PROJECT_DIR$/main.go" />
             </set>
           </value>
         </entry>
@@ -51,22 +49,6 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/kubernetes/module/pod.go" />
-              <option value="file://$PROJECT_DIR$/kubernetes/resource/pod.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="PodResource">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/code/dynamicStaringPod.go" />
-              <option value="file://$PROJECT_DIR$/kubernetes/resource/pod.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="PodTcp">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/kubernetes/resource/entity/tcp.go" />
             </set>
           </value>
         </entry>
@@ -80,7 +62,6 @@
         <entry key="Tcp">
           <value>
             <set>
-              <option value="file://$PROJECT_DIR$/kubernetes/resource/entity/tcp.go" />
               <option value="file://$PROJECT_DIR$/kubernetes/resource/tcp.go" />
             </set>
           </value>
@@ -88,29 +69,7 @@
         <entry key="TcpConnectResource">
           <value>
             <set>
-              <option value="file://$PROJECT_DIR$/kubernetes/resource/entity/tcp.go" />
               <option value="file://$PROJECT_DIR$/kubernetes/resource/tcp.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="TcpResource">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/kubernetes/interface/resource.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="UnitResource">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/kubernetes/interface/resource.go" />
-            </set>
-          </value>
-        </entry>
-        <entry key="fakeNamespacedScaleClient">
-          <value>
-            <set>
-              <option value="file://$PROJECT_DIR$/../client-go/scale/fake/client.go" />
             </set>
           </value>
         </entry>
@@ -128,7 +87,7 @@
         <entry key="file://$PROJECT_DIR$/code/dynamicStaringPod.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727871279063" />
+              <option name="lastModified" value="1727963875194" />
             </ScannedPath>
           </value>
         </entry>
@@ -159,13 +118,6 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/enum/resource.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727844505680" />
-            </ScannedPath>
-          </value>
-        </entry>
         <entry key="file://$PROJECT_DIR$/kubernetes/enum/resources.go">
           <value>
             <ScannedPath>
@@ -177,13 +129,6 @@
           <value>
             <ScannedPath>
               <option name="lastModified" value="1727844768843" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/enum/subResouce.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727845267342" />
             </ScannedPath>
           </value>
         </entry>
@@ -208,84 +153,38 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/interface/interface.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727866987459" />
-            </ScannedPath>
-          </value>
-        </entry>
         <entry key="file://$PROJECT_DIR$/kubernetes/interface/resource.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727869334108" />
+              <option name="lastModified" value="1727961577714" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/kubernetes/interface/strategies.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727877470256" />
+              <option name="lastModified" value="1727960833854" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/kubernetes/interface/template.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727944435362" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/kubernetes/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727925876958" />
+              <option name="lastModified" value="1728010938849" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/kubernetes/module/pod.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727871406473" />
-              <option name="schema">
-                <list>
-                  <option value="Pod" />
-                </list>
-              </option>
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/resource.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727842074280" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/resource/Pod.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727842124073" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/resource/entity.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727842589558" />
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/resource/entity/tcp.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727869074963" />
-              <option name="schema">
-                <list>
-                  <option value="TcpConnectResource" />
-                  <option value="Tcp" />
-                </list>
-              </option>
-            </ScannedPath>
-          </value>
-        </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/resource/pod.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727869075002" />
+              <option name="lastModified" value="1727961577710" />
               <option name="schema">
                 <list>
                   <option value="Pod" />
@@ -307,22 +206,34 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/kubernetes/strategies/scaling_expansionByTcpConnect.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727869460129" />
-            </ScannedPath>
-          </value>
-        </entry>
         <entry key="file://$PROJECT_DIR$/kubernetes/strategies/tcpConnect.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727926211832" />
+              <option name="lastModified" value="1728013697394" />
               <option name="schema">
                 <list>
                   <option value="TCPConnectStrategy" />
                 </list>
               </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/kubernetes/template/deployment.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727944435358" />
+              <option name="schema">
+                <list>
+                  <option value="Deployment" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/kubernetes/template/yaml.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727952865211" />
             </ScannedPath>
           </value>
         </entry>
@@ -394,41 +305,23 @@
             </ScannedPath>
           </value>
         </entry>
-        <entry key="file://$PROJECT_DIR$/../client-go/scale/fake/client.go">
-          <value>
-            <ScannedPath>
-              <option name="lastModified" value="1727838130951" />
-              <option name="schema">
-                <list>
-                  <option value="FakeScaleClient" />
-                  <option value="fakeNamespacedScaleClient" />
-                </list>
-              </option>
-            </ScannedPath>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="tableStructMapping">
       <map>
         <entry key="config" value="Config" />
-        <entry key="fake_namespaced_scale_client" value="fakeNamespacedScaleClient" />
-        <entry key="fake_scale_client" value="FakeScaleClient" />
+        <entry key="deployment" value="Deployment" />
         <entry key="fu_file_bo" value="FuFileBO" />
         <entry key="fu_file_bo_mapper" value="fuFileBOMapper" />
         <entry key="home" value="Home" />
         <entry key="my_sql_config" value="MySqlConfig" />
         <entry key="person" value="Person" />
         <entry key="pod" value="Pod" />
-        <entry key="pod_resource" value="PodResource" />
-        <entry key="pod_tcp" value="PodTcp" />
         <entry key="tcp" value="Tcp" />
         <entry key="tcp_connect_resource" value="TcpConnectResource" />
         <entry key="tcp_connect_strategy" value="TCPConnectStrategy" />
-        <entry key="tcp_resource" value="TcpResource" />
-        <entry key="unit_resource" value="UnitResource" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1727767246381" />
+    <option name="lastTimeChecked" value="1728000091354" />
   </component>
 </project>

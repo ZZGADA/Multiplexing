@@ -19,16 +19,16 @@ import (
 */
 
 const (
-	strategiesNum              = 3              // 判断策略总数
-	strategiesRecallNum        = 2              // 回收策略总数
-	separateTime               = 3              // 设置监控的间隔时间段
-	TimeSet                    = 5              // 每10秒统计一次
-	averageGrowthRateThreshold = 2              // 流量平均增速 每次流量的增长量为2倍
-	maxFloatRate               = 25             // 峰值流量
-	loadFactor                 = float32(3 / 4) // 负载因子
-	maxScalingDeployments      = 3              // 最大deployment伸缩量	伸缩量*replicate < cpu核心数
-	forbiddenExtendResource    = 5              // 禁止重复伸缩资源的时间
-	TimeToRecallResource       = 2 * 3          // 判断是否需要收缩pod（资源）的时间间隔
+	strategiesNum              = 3                // 判断策略总数
+	strategiesRecallNum        = 2                // 回收策略总数
+	separateTime               = 3                // 设置监控的间隔时间段
+	TimeSet                    = 5                // 每10秒统计一次
+	averageGrowthRateThreshold = 2                // 流量平均增速 每次流量的增长量为2倍
+	maxFloatRate               = 25               // 峰值流量
+	loadFactor                 = float32(3 / 4)   // 负载因子
+	maxScalingDeployments      = 3                // 最大deployment伸缩量	伸缩量*replicate < cpu核心数
+	forbiddenExtendResource    = 5                // 禁止重复伸缩资源的时间
+	TimeToRecallResource       = 2 * separateTime // 判断是否需要收缩pod（资源）的时间间隔
 )
 
 var (
@@ -174,7 +174,7 @@ func (tcpStrategy *TCPConnectStrategy) CheckIfNeedRecallDeployment() bool {
 	}
 
 	// 最终判断必须两个策略投票都是true 同时hasExtendDeploymentInFiveMinute 为false 表示5分钟内没有扩张过资源
-	fmt.Printf("!!!!!!!!!!!!!!!看看,GetHasExtendDeploymentInFiveMinute() %t\n", GetHasExtendDeploymentInFiveMinute())
+	//fmt.Printf("!!!!!!!!!!!!!!!看看,GetHasExtendDeploymentInFiveMinute() %t\n", GetHasExtendDeploymentInFiveMinute())
 	return vote && !GetHasExtendDeploymentInFiveMinute()
 }
 
@@ -187,7 +187,7 @@ func (tcpStrategy *TCPConnectStrategy) checkIfCanExtend() bool {
 
 	// 否则deployment有可以扩容的空间 但是需要做额外的判断
 	// 如果hasExtendDeploymentInFiveMinute 为false 即5分钟没有给deployment扩容 那么就可以扩容
-	fmt.Println("难道是这里！！=====", !GetHasExtendDeploymentInFiveMinute())
+	//fmt.Println("难道是这里！！=====", !GetHasExtendDeploymentInFiveMinute())
 	return !GetHasExtendDeploymentInFiveMinute()
 }
 

@@ -87,9 +87,9 @@ func main() {
 			passTime = 0
 		}
 
-		time.Sleep(time.Duration(strategies.TimeSet) * time.Second)
 		passTime += strategies.TimeSet
 
+		// 测试写法 TimeToRecallResource 后应*time.Minute
 		if passTime%strategies.TimeToRecallResource == 0 {
 			// 间隔一段时间后判断是否删除
 			log.Println("开始判断是否需要回收资源")
@@ -103,6 +103,7 @@ func main() {
 				}
 			}
 		}
+		time.Sleep(time.Duration(strategies.TimeSet) * time.Second)
 	}
 
 }
