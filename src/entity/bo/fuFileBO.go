@@ -45,6 +45,12 @@ func (mapper *fuFileBOMapper) GetOneFile(fileUuid string) FuFileBO {
 	return fuFileBO
 }
 
+func (mapper *fuFileBOMapper) UpdateFileName(name string, id int) int64 {
+
+	result := mapper.client.Model(&FuFileBO{}).Where("id = ?", id).Updates(FuFileBO{FileOriginalName: name})
+	return result.RowsAffected
+}
+
 // GetOneFileOrg //获取文件和org信息
 func (mapper *fuFileBOMapper) GetOneFileOrg(fileUuid string) FuFileBO {
 	var fuFileBO = FuFileBO{}

@@ -21,5 +21,7 @@ func testMultiplexing() {
 
 func testDynamicScaling() {
 	// 水平动态扩容
-	code.DynamicStringPod()
+	// code.DynamicStringPod()
+
+	code.TestConcrete()
 }

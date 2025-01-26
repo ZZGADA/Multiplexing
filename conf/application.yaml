@@ -5,6 +5,6 @@ db:
   username: root
   password: zZ-szshyjbz16D
   database: ssm_db
-  host: 8.130.99.124
+  host: 8.130.14.29
   port: 33170
 

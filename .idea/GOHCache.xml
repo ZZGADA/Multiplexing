@@ -84,6 +84,13 @@
     </option>
     <option name="scannedPathMapping">
       <map>
+        <entry key="file://$PROJECT_DIR$/code/concrete_update.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1730361653622" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/code/dynamicStaringPod.go">
           <value>
             <ScannedPath>
@@ -240,7 +247,7 @@
         <entry key="file://$PROJECT_DIR$/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1727840765042" />
+              <option name="lastModified" value="1730359921369" />
             </ScannedPath>
           </value>
         </entry>
@@ -260,7 +267,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1726817039730" />
+              <option name="lastModified" value="1730361088581" />
               <option name="schema">
                 <list>
                   <option value="FuFileBO" />
@@ -322,6 +329,6 @@
         <entry key="tcp_connect_strategy" value="TCPConnectStrategy" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1728000091354" />
+    <option name="lastTimeChecked" value="1737877778919" />
   </component>
 </project>
